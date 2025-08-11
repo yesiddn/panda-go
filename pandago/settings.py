@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     # Project apps
     "users",
     "localities",
+    "collection_requests",
+    "docs",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
