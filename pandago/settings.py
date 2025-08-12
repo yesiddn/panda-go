@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     "users",
     "localities",
     "collection_requests",
+    "companies",
+    "waste_categories",
+    "routes",
     "docs",
     "drf_spectacular",
 ]
