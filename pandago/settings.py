@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "corsheaders",
     # Project apps
     "users",
     "localities",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -147,6 +149,11 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # tu frontend local
+    # "https://tu-frontend.com",  # producción
+]
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Doctor App API",
