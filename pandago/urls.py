@@ -23,4 +23,6 @@ urlpatterns = [
     path("api/", include("users.urls")),
     path("api/", include("collection_requests.urls")),
     path("api/", include("companies.urls")),
+    path("api/localities/", include("localities.urls")),
+    path("api/waste-categories/", include("waste_categories.urls")),
 ]
