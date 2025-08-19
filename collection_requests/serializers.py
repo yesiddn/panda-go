@@ -3,8 +3,11 @@ from routes.serializers import CollectionRouteSerializer
 from .models import Request
 from waste_categories.serializers import WasteCategorySerializer
 from waste_categories.models import WasteCategory
+from users.serializers import UserDetailSerializer
+
 
 class RequestSerializer(serializers.ModelSerializer):
+    user = UserDetailSerializer(read_only=True)
     waste_category = WasteCategorySerializer(read_only=True)
     waste_category_id = serializers.PrimaryKeyRelatedField(
         queryset=WasteCategory.objects.all(),
