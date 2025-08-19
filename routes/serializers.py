@@ -1,8 +1,12 @@
 from rest_framework import serializers
+from companies.serializers import CompanySerializer
 from .models import CollectionRoute
-
+from waste_categories.serializers import WasteCategorySerializer
 
 class CollectionRouteSerializer(serializers.ModelSerializer):
+    waste_category = WasteCategorySerializer(read_only=True)
+    company = CompanySerializer(read_only=True)
+
     class Meta:
         model = CollectionRoute
         fields = "__all__"
