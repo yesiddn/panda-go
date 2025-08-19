@@ -5,6 +5,7 @@ from django.utils import timezone
 from waste_categories.models import WasteCategory
 from routes.models import CollectionRoute
 
+
 class Request(models.Model):
     STATUS_CHOICES = [
         ("pending", "Pending"),
@@ -25,10 +26,17 @@ class Request(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     locality = models.ForeignKey(Locality, on_delete=models.CASCADE)
-    waste_category = models.ForeignKey(
-        WasteCategory, on_delete=models.PROTECT
+    waste_category = models.ForeignKey(WasteCategory, on_delete=models.PROTECT)
+    route = models.ForeignKey(
+        CollectionRoute,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="requests",
     )
-    route = models.ForeignKey(CollectionRoute, on_delete=models.SET_NULL, null=True, blank=True, related_name='requests')
+    weight_kg = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
 
     def __str__(self):
         return f"Request {self.id} - {self.status}"
