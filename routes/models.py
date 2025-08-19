@@ -38,4 +38,4 @@ class CollectionRoute(models.Model):
     )
 
     def __str__(self):
-        return f"Route {self.route_code or self.id} on {self.route_date}"
+        return f"{self.route_code or self.id}"
