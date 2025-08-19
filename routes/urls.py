@@ -2,6 +2,8 @@ from django.urls import path
 from .views import (
     CollectionRouteListCreateAPIView,
     CollectionRouteRetrieveUpdateDestroyAPIView,
+    CollectionRouteSetInProgressAPIView,
+    CollectionRouteSetCompletedAPIView,
 )
 
 urlpatterns = [
@@ -10,5 +12,15 @@ urlpatterns = [
         "<int:pk>/",
         CollectionRouteRetrieveUpdateDestroyAPIView.as_view(),
         name="route-detail",
+    ),
+    path(
+        "<int:pk>/set-in-progress/",
+        CollectionRouteSetInProgressAPIView.as_view(),
+        name="route-set-in-progress",
+    ),
+    path(
+        "<int:pk>/set-completed/",
+        CollectionRouteSetCompletedAPIView.as_view(),
+        name="route-set-completed",
     ),
 ]
