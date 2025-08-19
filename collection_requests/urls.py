@@ -1,5 +1,10 @@
 from django.urls import path
-from .views import RequestListCreateAPIView, RequestRetrieveUpdateDestroyAPIView, RequestsByRouteAPIView
+from .views import (
+    RequestListCreateAPIView,
+    RequestRetrieveUpdateDestroyAPIView,
+    RequestsByRouteAPIView,
+    RequestApproveAPIView,
+)
 
 urlpatterns = [
     path("requests/", RequestListCreateAPIView.as_view(), name="request-list-create"),
@@ -12,5 +17,10 @@ urlpatterns = [
         "requests/route/<int:route_id>/",
         RequestsByRouteAPIView.as_view(),
         name="requests-by-route",
+    ),
+    path(
+        "requests/<int:pk>/approve/",
+        RequestApproveAPIView.as_view(),
+        name="request-approve",
     ),
 ]
