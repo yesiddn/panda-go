@@ -5,4 +5,4 @@ class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = '__all__'
-        read_only_fields = ('user', 'status', 'status_reason', 'request_date')
+        read_only_fields = ("user", "status", "status_reason", "request_date", "route")
