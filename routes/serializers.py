@@ -1,11 +1,21 @@
 from rest_framework import serializers
 from companies.serializers import CompanySerializer
+from localities.models import Locality
+from localities.serializers import LocalitySerializer
 from .models import CollectionRoute
 from waste_categories.serializers import WasteCategorySerializer
 
 class CollectionRouteSerializer(serializers.ModelSerializer):
     waste_category = WasteCategorySerializer(read_only=True)
     company = CompanySerializer(read_only=True)
+    locality = LocalitySerializer(read_only=True)
+    locality_id = serializers.PrimaryKeyRelatedField(
+        queryset=Locality.objects.all(),
+        write_only=True,
+        source="locality",
+        required=False,
+        allow_null=True,
+    )
 
     class Meta:
         model = CollectionRoute
