@@ -30,7 +30,7 @@ class UserRegistrationView(generics.CreateAPIView):
         user = serializer.save()
         if user.groups.filter(name='user').exists():
             try:
-                organic_category = WasteCategory.objects.get(name='Organico')
+                organic_category = WasteCategory.objects.get(name="Organico")
                 collection_date = timezone.now().date() + timedelta(days=7)
                 address_snapshot = {'address': user.locality.name}
 
